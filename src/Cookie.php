@@ -408,7 +408,7 @@ class Cookie implements CookieInterface
         if (!preg_match('/^[a-zA-Z0-9!#$%&\' *+\-.^_`|~]+$/', $name)) {
             throw new \InvalidArgumentException(sprintf(
                 'The cookie name [%s] contains invalid characters; must contain any US-ASCII'
-                                    . ' characters, except control and separator characters, spaces, or tabs.',
+                . ' characters, except control and separator characters, spaces, or tabs.',
                 $name
             ));
         }
@@ -436,11 +436,14 @@ class Cookie implements CookieInterface
     private function setExpires($expire): self
     {
         if (
-                $expire !== null && !is_int($expire) && !is_string($expire) && !$expire instanceof \DateTimeInterface
+            $expire !== null
+            && !is_int($expire)
+            && !is_string($expire)
+            && !$expire instanceof \DateTimeInterface
         ) {
             throw new \InvalidArgumentException(sprintf(
                 'The cookie expire time is not valid; must be null, or string,'
-                                    . ' or integer, or DateTimeInterface instance; received [%s]',
+                . ' or integer, or DateTimeInterface instance; received [%s]',
                 is_object($expire) ? get_class($expire) : gettype($expire)
             ));
         }

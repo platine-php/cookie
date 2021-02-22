@@ -143,8 +143,10 @@ class CookieManager implements CookieManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function send(ResponseInterface $response, bool $removeResponseCookies = true): ResponseInterface
-    {
+    public function send(
+        ResponseInterface $response,
+        bool $removeResponseCookies = true
+    ): ResponseInterface {
         if ($removeResponseCookies) {
             $response = $response->withoutHeader('Set-Cookie');
         }
