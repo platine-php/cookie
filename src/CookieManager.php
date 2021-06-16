@@ -8,6 +8,7 @@
  * This content is released under the MIT License (MIT)
  *
  * Copyright (c) 2020 Platine Cookie
+ * Copyright (c) 2020 Evgeniy Zyubin
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -54,13 +55,13 @@ class CookieManager implements CookieManagerInterface
 
     /**
      * The list of CookieInterface
-     * @var array
+     * @var array<CookieInterface>
      */
     protected array $cookies = [];
 
     /**
      * Create new instance
-     * @param array $cookies the default cookies to store
+     * @param array<CookieInterface> $cookies the default cookies to store
      */
     public function __construct(array $cookies = [])
     {

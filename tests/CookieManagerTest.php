@@ -7,7 +7,7 @@ namespace Platine\Test\Cookie;
 use Platine\Cookie\Cookie;
 use Platine\Cookie\CookieManager;
 use Platine\Http\Response;
-use Platine\PlatineTestCase;
+use Platine\Dev\PlatineTestCase;
 
 /**
  * CookieManager class tests

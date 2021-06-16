@@ -8,6 +8,7 @@
  * This content is released under the MIT License (MIT)
  *
  * Copyright (c) 2020 Platine Cookie
+ * Copyright (c) 2020 Evgeniy Zyubin
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -68,7 +69,7 @@ interface CookieManagerInterface
     /**
      * Return all the cookies
      *
-     * @return array the list of CookieInterface
+     * @return array<CookieInterface> the list of CookieInterface
      */
     public function all(): array;
 
@@ -114,5 +115,8 @@ interface CookieManagerInterface
      * @param  bool      $removeResponseCookies whether to remove previously set cookies from the response
      * @return ResponseInterface
      */
-    public function send(ResponseInterface $response, bool $removeResponseCookies = true): ResponseInterface;
+    public function send(
+        ResponseInterface $response,
+        bool $removeResponseCookies = true
+    ): ResponseInterface;
 }

@@ -10,7 +10,7 @@ use Platine\Cookie\Middleware\CookieSendMiddleware;
 use Platine\Http\Response;
 use Platine\Http\ServerRequest;
 use Platine\Http\Handler\RequestHandler;
-use Platine\PlatineTestCase;
+use Platine\Dev\PlatineTestCase;
 
 /**
  * CookieSendMiddleware class tests

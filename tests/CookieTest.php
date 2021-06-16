@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Platine\Test\Cookie;
 
 use Platine\Cookie\Cookie;
-use Platine\PlatineTestCase;
+use Platine\Dev\PlatineTestCase;
 
 /**
  * Cookie class tests
