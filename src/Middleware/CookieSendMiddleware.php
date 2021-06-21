@@ -48,10 +48,10 @@ declare(strict_types=1);
 namespace Platine\Cookie\Middleware;
 
 use Platine\Cookie\CookieManagerInterface;
+use Platine\Http\Handler\MiddlewareInterface;
+use Platine\Http\Handler\RequestHandlerInterface;
 use Platine\Http\ResponseInterface;
 use Platine\Http\ServerRequestInterface;
-use Platine\Http\Handler\RequestHandlerInterface;
-use Platine\Http\Handler\Middleware\MiddlewareInterface;
 
 class CookieSendMiddleware implements MiddlewareInterface
 {
