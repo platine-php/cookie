@@ -52,7 +52,6 @@ use Platine\Http\ResponseInterface;
 
 class CookieManager implements CookieManagerInterface
 {
-
     /**
      * The list of CookieInterface
      * @var array<CookieInterface>

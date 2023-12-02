@@ -17,7 +17,6 @@ use Platine\Dev\PlatineTestCase;
  */
 class CookieManagerTest extends PlatineTestCase
 {
-
     public function testConstructor(): void
     {
         //Default

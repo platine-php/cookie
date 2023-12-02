@@ -56,7 +56,6 @@ namespace Platine\Cookie;
  */
 interface CookieInterface
 {
-
     /**
      * Same site policy "None"
      */

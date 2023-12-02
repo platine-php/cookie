@@ -20,7 +20,6 @@ use Platine\Dev\PlatineTestCase;
  */
 class CookieSendMiddlewareTest extends PlatineTestCase
 {
-
     public function testConstructor(): void
     {
         $cm = $this->getMockBuilder(CookieManager::class)

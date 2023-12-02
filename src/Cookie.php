@@ -49,7 +49,6 @@ namespace Platine\Cookie;
 
 class Cookie implements CookieInterface
 {
-
     /**
      * The name of the cookie
      *

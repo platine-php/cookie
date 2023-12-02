@@ -15,7 +15,6 @@ use Platine\Dev\PlatineTestCase;
  */
 class CookieTest extends PlatineTestCase
 {
-
     public function testConstructor(): void
     {
         $c = new Cookie('name', 'value');

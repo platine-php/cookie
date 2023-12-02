@@ -51,7 +51,6 @@ use Platine\Http\ResponseInterface;
 
 interface CookieManagerInterface
 {
-
     /**
      * Set the cookie
      *

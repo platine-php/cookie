@@ -55,7 +55,6 @@ use Platine\Http\ServerRequestInterface;
 
 class CookieSendMiddleware implements MiddlewareInterface
 {
-
     /**
      * The cookie manager instance
      * @var CookieManagerInterface
