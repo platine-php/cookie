@@ -4,11 +4,12 @@
 [![Project Status](http://opensource.box.com/badges/active.svg)](http://opensource.box.com/badges)
 [![Latest Stable Version](https://poser.pugx.org/platine-php/cookie/v)](https://packagist.org/packages/platine-php/cookie)
 [![Latest Unstable Version](https://poser.pugx.org/platine-php/cookie/v/unstable)](https://packagist.org/packages/platine-php/cookie)
-[![License](https://poser.pugx.org/platine-php/cookie/license)](https://packagist.org/packages/platine-php/cookie)
-[![Build Status](https://img.shields.io/travis/platine-php/cookie/develop.svg?style=flat-square)](https://travis-ci.com/platine-php/cookie)  
+[![Total Downloads](https://poser.pugx.org/platine-php/cookie/downloads)](https://packagist.org/packages/platine-php/cookie)
+[![License](https://poser.pugx.org/platine-php/cookie/license)](https://packagist.org/packages/platine-php/cookie)  
 [![Quality Score](https://img.shields.io/scrutinizer/g/platine-php/cookie.svg?style=flat-square)](https://scrutinizer-ci.com/g/platine-php/cookie)
-[![Maintainability](https://api.codeclimate.com/v1/badges/49f8c3f9d1251913c85d/maintainability)](https://codeclimate.com/github/platine-php/cookie/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/49f8c3f9d1251913c85d/test_coverage)](https://codeclimate.com/github/platine-php/cookie/test_coverage)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d3b36de120ee40d392acc1138d7d97f0)](https://app.codacy.com/gh/platine-php/cookie/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/d3b36de120ee40d392acc1138d7d97f0)](https://app.codacy.com/gh/platine-php/cookie/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
+
 
 ### Requirements 
 - **PHP >= 7.4**, **PHP 8** 
@@ -22,5 +23,5 @@ composer require platine-php/cookie
 ### License
 MIT License See [LICENSE.MD](LICENSE.MD)
 
-### Documentation 
-Coming soon, be patient
+### Resources
+- [Documentation](https://docs.platine-php.com/packages/cookie)
