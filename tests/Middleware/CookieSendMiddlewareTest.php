@@ -7,10 +7,10 @@ namespace Platine\Test\Cookie\Middleware;
 use Platine\Cookie\Cookie;
 use Platine\Cookie\CookieManager;
 use Platine\Cookie\Middleware\CookieSendMiddleware;
+use Platine\Dev\PlatineTestCase;
+use Platine\Http\Handler\RequestHandlerInterface;
 use Platine\Http\Response;
 use Platine\Http\ServerRequest;
-use Platine\Http\Handler\RequestHandler;
-use Platine\Dev\PlatineTestCase;
 
 /**
  * CookieSendMiddleware class tests
@@ -42,7 +42,7 @@ class CookieSendMiddlewareTest extends PlatineTestCase
 
         $this->assertCount(1, $responseMock->getHeaders('Set-Cookie'));
 
-        $requestHandler = $this->getMockBuilder(RequestHandler::class)
+        $requestHandler = $this->getMockBuilder(RequestHandlerInterface::class)
                 ->getMock();
 
         $requestHandler->expects($this->any())
@@ -73,7 +73,7 @@ class CookieSendMiddlewareTest extends PlatineTestCase
 
         $this->assertCount(1, $responseMock->getHeaders('Set-Cookie'));
 
-        $requestHandler = $this->getMockBuilder(RequestHandler::class)
+        $requestHandler = $this->getMockBuilder(RequestHandlerInterface::class)
                 ->getMock();
 
         $requestHandler->expects($this->any())
