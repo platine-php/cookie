@@ -6,6 +6,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/platine-php/cookie/v/unstable)](https://packagist.org/packages/platine-php/cookie)
 [![Total Downloads](https://poser.pugx.org/platine-php/cookie/downloads)](https://packagist.org/packages/platine-php/cookie)
 [![License](https://poser.pugx.org/platine-php/cookie/license)](https://packagist.org/packages/platine-php/cookie)  
+![Tests](https://github.com/platine-php/cookie/actions/workflows/ci.yml/badge.svg)
 [![Quality Score](https://img.shields.io/scrutinizer/g/platine-php/cookie.svg?style=flat-square)](https://scrutinizer-ci.com/g/platine-php/cookie)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d3b36de120ee40d392acc1138d7d97f0)](https://app.codacy.com/gh/platine-php/cookie/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/d3b36de120ee40d392acc1138d7d97f0)](https://app.codacy.com/gh/platine-php/cookie/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
