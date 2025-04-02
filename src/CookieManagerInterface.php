@@ -49,6 +49,10 @@ namespace Platine\Cookie;
 
 use Platine\Http\ResponseInterface;
 
+/**
+ * @class CookieManagerInterface
+ * @package Platine\Cookie
+ */
 interface CookieManagerInterface
 {
     /**
@@ -68,7 +72,7 @@ interface CookieManagerInterface
     /**
      * Return all the cookies
      *
-     * @return array<CookieInterface> the list of CookieInterface
+     * @return CookieInterface[] the list of CookieInterface
      */
     public function all(): array;
 
@@ -76,7 +80,8 @@ interface CookieManagerInterface
      * Return the value of the named cookie.
      *
      * @param string $name the name of the cookie
-     * @return string|null the value of the named cookie or `null` if the cookie does not exist.
+     * @return string|null the value of the named cookie or `null`
+     * if the cookie does not exist.
      */
     public function getValue(string $name): ?string;
 
@@ -106,12 +111,14 @@ interface CookieManagerInterface
     public function clear(): void;
 
     /**
-     * Set all cookie to the response and return a clone instance of the response with the cookies set.
+     * Set all cookie to the response and return a clone instance
+     * of the response with the cookies set.
      *
      * This method must be called before emitting the response.
      *
      * @param  ResponseInterface $response
-     * @param  bool      $removeResponseCookies whether to remove previously set cookies from the response
+     * @param  bool $removeResponseCookies whether to remove
+     *  previously set cookies from the response
      * @return ResponseInterface
      */
     public function send(

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Platine\Test\Cookie;
 
+use DateTime;
+use InvalidArgumentException;
 use Platine\Cookie\Cookie;
 use Platine\Dev\PlatineTestCase;
 
@@ -177,37 +179,31 @@ class CookieTest extends PlatineTestCase
 
     public function testCookieNameIsEmptyOrNull(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $c = new Cookie('', 'value');
     }
 
     public function testCookieNameInvalidCaracter(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $c = new Cookie('foo@bar', 'value');
-    }
-
-    public function testCookieExpiresInvalidParam(): void
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $c = new Cookie('foobar', 'value', new \stdClass());
     }
 
     public function testCookieExpiresInvalidDateString(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $c = new Cookie('foobar', 'value', 'not_good');
     }
 
     public function testCookieExpiresUsingDatetime(): void
     {
-        $c = new Cookie('foobar', 'value', new \DateTime('2000-09-09'));
+        $c = new Cookie('foobar', 'value', new DateTime('2000-09-09'));
         $this->assertTrue($c->isExpired());
     }
 
     public function testCookieSameSiteInvalid(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $c = new Cookie('foobar', 'value', null, null, '/', true, true, 'foo_same_site');
     }
 }

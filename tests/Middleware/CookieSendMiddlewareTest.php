@@ -36,9 +36,7 @@ class CookieSendMiddlewareTest extends PlatineTestCase
 
     public function testSendRemovePreviousResponseCookies(): void
     {
-        $responseMock = new Response();
-
-        $responseMock = $responseMock->withHeader('Set-Cookie', 'name=value');
+        $responseMock = (new Response())->withHeader('Set-Cookie', 'name=value');
 
         $this->assertCount(1, $responseMock->getHeaders('Set-Cookie'));
 
@@ -50,7 +48,7 @@ class CookieSendMiddlewareTest extends PlatineTestCase
                 ->will($this->returnValue($responseMock));
 
         $request = $this->getMockBuilder(ServerRequest::class)
-                ->getMock();
+                        ->getMock();
 
         $r = new Cookie('name', 'value');
         $cm = new CookieManager([$r]);
@@ -67,9 +65,7 @@ class CookieSendMiddlewareTest extends PlatineTestCase
 
     public function testSendDontRemovePreviousResponseCookies(): void
     {
-        $responseMock = new Response();
-
-        $responseMock = $responseMock->withHeader('Set-Cookie', 'name=value');
+        $responseMock = (new Response())->withHeader('Set-Cookie', 'name=value');
 
         $this->assertCount(1, $responseMock->getHeaders('Set-Cookie'));
 

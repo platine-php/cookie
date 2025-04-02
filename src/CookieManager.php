@@ -47,32 +47,28 @@ declare(strict_types=1);
 
 namespace Platine\Cookie;
 
-use InvalidArgumentException;
 use Platine\Http\ResponseInterface;
 
+/**
+ * @class CookieManager
+ * @package Platine\Cookie
+ */
 class CookieManager implements CookieManagerInterface
 {
     /**
-     * The list of CookieInterface
-     * @var array<CookieInterface>
+     * The cookies
+     * @var CookieInterface[]
      */
     protected array $cookies = [];
 
     /**
      * Create new instance
-     * @param array<CookieInterface> $cookies the default cookies to store
+     * @param CookieInterface[] $cookies the default cookies to store
      */
     public function __construct(array $cookies = [])
     {
         foreach ($cookies as $cookie) {
-            if (!$cookie instanceof CookieInterface) {
-                throw new InvalidArgumentException(sprintf(
-                    'Each cookie must implement interface [%s]',
-                    CookieInterface::class
-                ));
-            }
-
-            $this->cookies[$cookie->getName()] = $cookie;
+            $this->add($cookie);
         }
     }
 
@@ -89,7 +85,7 @@ class CookieManager implements CookieManagerInterface
      */
     public function get(string $name): ?CookieInterface
     {
-        return isset($this->cookies[$name]) ? $this->cookies[$name] : null;
+        return $this->cookies[$name] ?? null;
     }
 
     /**
@@ -105,7 +101,9 @@ class CookieManager implements CookieManagerInterface
      */
     public function getValue(string $name): ?string
     {
-        return isset($this->cookies[$name]) ? $this->cookies[$name]->getValue() : null;
+        return isset($this->cookies[$name])
+                ? $this->cookies[$name]->getValue()
+                : null;
     }
 
     /**

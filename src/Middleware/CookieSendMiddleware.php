@@ -53,28 +53,21 @@ use Platine\Http\Handler\RequestHandlerInterface;
 use Platine\Http\ResponseInterface;
 use Platine\Http\ServerRequestInterface;
 
+/**
+ * @class CookieSendMiddleware
+ * @package Platine\Cookie\Middleware
+ */
 class CookieSendMiddleware implements MiddlewareInterface
 {
     /**
-     * The cookie manager instance
-     * @var CookieManagerInterface
-     */
-    protected CookieManagerInterface $cookies;
-
-    /**
-     * Whether to remove previously set cookies from the response.
-     * @var bool
-     */
-    protected bool $removeResponseCookies;
-
-    /**
      * Create new instance
-     * @param CookieManagerInterface $cookies
-     * @param bool           $removeResponseCookies
+     * @param CookieManagerInterface $cookies The cookie manager instance
+     * @param bool $removeResponseCookies Whether to remove previously
+     * set cookies from the response.
      */
     public function __construct(
-        CookieManagerInterface $cookies,
-        bool $removeResponseCookies = true
+        protected CookieManagerInterface $cookies,
+        protected bool $removeResponseCookies = true
     ) {
         $this->cookies = $cookies;
         $this->removeResponseCookies = $removeResponseCookies;

@@ -6,8 +6,8 @@ namespace Platine\Test\Cookie;
 
 use Platine\Cookie\Cookie;
 use Platine\Cookie\CookieManager;
-use Platine\Http\Response;
 use Platine\Dev\PlatineTestCase;
+use Platine\Http\Response;
 
 /**
  * CookieManager class tests
@@ -24,13 +24,11 @@ class CookieManagerTest extends PlatineTestCase
         $this->assertEmpty($c->all());
         $this->assertCount(0, $c->all());
 
-        $c = new CookieManager(array(new Cookie('name', 'value')));
-        $this->assertCount(1, $c->all());
+        $o = new CookieManager([new Cookie('name', 'value')]);
 
-        //Value is not an instance of CookieInterface
-        $this->expectException(\InvalidArgumentException::class);
-        $c = new CookieManager(array(new Cookie('name', 'value'), 123));
+        $this->assertCount(1, $o->all());
     }
+
 
     public function testAdd(): void
     {

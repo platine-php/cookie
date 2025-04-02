@@ -47,7 +47,12 @@ declare(strict_types=1);
 
 namespace Platine\Cookie;
 
+use DateTimeInterface;
+
 /**
+ * @class CookieInterface
+ * @package Platine\Cookie
+ *
  * Value object representing a cookie.
  *
  * Instances of this interface are considered immutable; all methods that might
@@ -141,16 +146,16 @@ interface CookieInterface
      * which will expire as soon as the browser is closed.
      *
      *
-     * @param int|string|\DateTimeInterface|null $expire
+     * @param int|string|DateTimeInterface|null $expire
      *
      * @return CookieInterface
      */
-    public function withExpires($expire = null): self;
+    public function withExpires(int|string|DateTimeInterface|null $expire = null): self;
 
     /**
      * Return the domain of the cookie
      *
-     * @return string
+     * @return string|null
      */
     public function getDomain(): ?string;
 
@@ -169,7 +174,7 @@ interface CookieInterface
     /**
      * Return the path of the cookie
      *
-     * @return string
+     * @return string|null
      */
     public function getPath(): ?string;
 
@@ -228,7 +233,7 @@ interface CookieInterface
     /**
      * Return the path of the cookie
      *
-     * @return string
+     * @return string|null
      */
     public function getSameSite(): ?string;
 

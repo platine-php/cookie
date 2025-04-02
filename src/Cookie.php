@@ -47,6 +47,13 @@ declare(strict_types=1);
 
 namespace Platine\Cookie;
 
+use DateTimeInterface;
+use InvalidArgumentException;
+
+/**
+ * @class Cookie
+ * @package Platine\Cookie
+ */
 class Cookie implements CookieInterface
 {
     /**
@@ -112,7 +119,7 @@ class Cookie implements CookieInterface
      *
      * @param string $name
      * @param string $value
-     * @param int|string|\DateTimeInterface|null $expire
+     * @param int|string|DateTimeInterface|null $expire
      * @param string |null $domain
      * @param string |null $path
      * @param bool|null $secure
@@ -122,7 +129,7 @@ class Cookie implements CookieInterface
     public function __construct(
         string $name,
         string $value = '',
-        $expire = null,
+        int|string|DateTimeInterface|null $expire = null,
         ?string $domain = null,
         ?string $path = '/',
         ?bool $secure = true,
@@ -216,7 +223,7 @@ class Cookie implements CookieInterface
     /**
      * {@inheritdoc}
      */
-    public function withExpires($expire = null): self
+    public function withExpires(int|string|DateTimeInterface|null $expire = null): self
     {
         if ($expire === $this->expires) {
             return $this;
@@ -306,7 +313,7 @@ class Cookie implements CookieInterface
      */
     public function isHttpOnly(): bool
     {
-        return $this->httpOnly ? $this->httpOnly : false;
+        return $this->httpOnly ?? false;
     }
 
     /**
@@ -364,7 +371,7 @@ class Cookie implements CookieInterface
     {
         $cookie = $this->name . '=' . rawurlencode($this->value);
 
-        if (!$this->isSession()) {
+        if ($this->isSession() === false) {
             $cookie .= '; Expires=' . gmdate('D, d-M-Y H:i:s T', $this->expires);
             $cookie .= '; Max-Age=' . $this->getMaxAge();
         }
@@ -399,14 +406,14 @@ class Cookie implements CookieInterface
     private function setName(string $name): self
     {
         if (empty($name)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'The cookie name [%s] could not be empty',
                 $name
             ));
         }
 
         if (!preg_match('/^[a-zA-Z0-9!#$%&\' *+\-.^_`|~]+$/', $name)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'The cookie name [%s] contains invalid characters; must contain any US-ASCII'
                 . ' characters, except control and separator characters, spaces, or tabs.',
                 $name
@@ -431,35 +438,22 @@ class Cookie implements CookieInterface
 
     /**
      * Set the cookie expires
-     * @param mixed $expire
+     * @param int|string|DateTimeInterface|null $expire
      */
-    private function setExpires($expire): self
+    private function setExpires(int|string|DateTimeInterface|null $expire): self
     {
-        if (
-            $expire !== null
-            && !is_int($expire)
-            && !is_string($expire)
-            && !$expire instanceof \DateTimeInterface
-        ) {
-            throw new \InvalidArgumentException(sprintf(
-                'The cookie expire time is not valid; must be null, or string,'
-                . ' or integer, or DateTimeInterface instance; received [%s]',
-                is_object($expire) ? get_class($expire) : gettype($expire)
-            ));
-        }
-
-        if (empty($expire)) {
+        if ($expire === null || (is_string($expire) && empty($expire))) {
             $expire = 0;
         }
 
-        if ($expire instanceof \DateTimeInterface) {
+        if ($expire instanceof DateTimeInterface) {
             $expire = $expire->format('U');
         } elseif (!is_numeric($expire)) {
             $strExpire = $expire;
             $expire = strtotime($strExpire);
 
             if ($expire === false) {
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'The string representation of the cookie expire time [%s] is not valid',
                     $strExpire
                 ));
@@ -521,19 +515,23 @@ class Cookie implements CookieInterface
      */
     private function setSameSite(?string $sameSite): self
     {
-        $sameSite = empty($sameSite) ? null : ucfirst(strtolower($sameSite));
+        $sameSiteValue = empty($sameSite) ? null : ucfirst(strtolower($sameSite));
 
-        $sameSiteList = [self::SAME_SITE_NONE, self::SAME_SITE_LAX, self::SAME_SITE_STRICT];
+        $sameSiteList = [
+            self::SAME_SITE_NONE,
+            self::SAME_SITE_LAX,
+            self::SAME_SITE_STRICT,
+        ];
 
-        if ($sameSite !== null && !in_array($sameSite, $sameSiteList, true)) {
-            throw new \InvalidArgumentException(sprintf(
+        if ($sameSiteValue !== null && !in_array($sameSiteValue, $sameSiteList, true)) {
+            throw new InvalidArgumentException(sprintf(
                 'The same site attribute `%s` is not valid; must be one of (%s).',
-                $sameSite,
+                $sameSiteValue,
                 implode(', ', $sameSiteList)
             ));
         }
 
-        $this->sameSite = $sameSite;
+        $this->sameSite = $sameSiteValue;
 
         return $this;
     }
