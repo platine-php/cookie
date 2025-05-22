@@ -48,6 +48,7 @@ declare(strict_types=1);
 namespace Platine\Cookie;
 
 use DateTimeInterface;
+use Stringable;
 
 /**
  * @class CookieInterface
@@ -59,7 +60,7 @@ use DateTimeInterface;
  * change state MUST be implemented such that they retain the internal state of
  * the current instance and return an instance that contains the changed state.
  */
-interface CookieInterface
+interface CookieInterface extends Stringable
 {
     /**
      * Same site policy "None"
@@ -255,11 +256,4 @@ interface CookieInterface
      * @return bool
      */
     public function isSession(): bool;
-
-    /**
-     * Return the string representation of this cookie
-     *
-     * @return string
-     */
-    public function __toString(): string;
 }

@@ -20,8 +20,8 @@
 	
     "require": {
         "php": "^8",
-        "platine-php/http": "^1.0",
-        "platine-php/request-handler": "^1.0"
+        "platine-php/http": "^2.0",
+        "platine-php/request-handler": "^2.0"
     },
 	
     "require-dev": {
